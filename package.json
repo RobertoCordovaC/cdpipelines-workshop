@@ -1,0 +1,22 @@
+{
+  "name": "functional_programming_with_javascript",
+  "version": "1.0.0",
+  "description": "It's a set of slides related to Functional Programming with Javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/faustocv/functional_programming_with_js.git"
+  },
+  "author": "Fausto Castaneda <fausto.castaneda.v@gmail.com>",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/faustocv/functional_programming_with_js#readme",
+  "dependencies": {
+    "remark": "^8.0.0",
+    "remark-html": "^6.0.1",
+    "remark-preset-lint-recommended": "^3.0.0",
+    "vfile-reporter": "^4.0.0"
+  }
+}
