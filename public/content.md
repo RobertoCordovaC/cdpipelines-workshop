@@ -1,3 +1,23 @@
-# Functional Programming
+class: center, middle, main-title
 
-## Markdown areas in functional programming
+# Principal heading
+
+By FaustoC
+
+---
+
+class: center, middle, subtitle-1
+
+# Secondary heading 1
+
+---
+
+class: center, middle, subtitle-2
+
+# Secondary heading 2
+
+---
+
+class: center, middle, subtitle-3
+
+# Secondary heading 3

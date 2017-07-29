@@ -6,6 +6,12 @@ $font-family-content: 'Droid Serif';
 $font-family-title: 'Yanone Kaffeesatz';
 $font-family-code: 'Ubuntu Mono';
 
+$orange-color: #d89f39;
+$blue-color: #3a81ba;
+$green-color: #8bab42;
+$silver-color: #272822;
+$light-silver-color: #777872;
+
 body {
   font-family: $font-family-content;
 }
@@ -16,4 +22,41 @@ h1, h2, h3 {
 
 }
 
-.remark-code, .remark-inline-code { font-family: $font-family-code;  }
+.remark-code, .remark-inline-code { font-family: $font-family-code; }
+
+.main-title {
+  background: $silver-color;
+  color: $light-silver-color;
+  text-shadow: 0 0 20px #333;
+}
+
+.subtitle-1 {
+  background: $orange-color;
+  color: black;
+}
+
+.subtitle-2 {
+  background: $green-color;
+  color: black;
+}
+
+.subtitle-3 {
+  background: $blue-color;
+  color: white;
+}
+
+.image-source {
+  font-size: 12px;
+  font-style: oblique;
+  font-weight: bold;
+}
+
+.key-word {
+  font-family: $font-family-title;
+  font-weight: normal;
+  color: white;
+  font-size: 2.5em;
+  padding: 20px;
+  background: $silver-color;
+  display: inline-grid;
+}
