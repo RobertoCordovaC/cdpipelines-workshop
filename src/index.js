@@ -1,12 +1,7 @@
-import remark from 'remark'
-import recommended from 'remark-preset-lint-recommended'
-import html from 'remark-html'
-import report from 'vfile-reporter'
+require('./styles.scss')
 
-remark()
-  .use(recommended)
-  .use(html)
-  .process('## Hello world!!', (err, file) => {
-    console.error(report(err || file))
-    console.log(String(file))
-  })
+const HelloWorld = () => {
+  document.write("hello, functional programming!!")
+}
+
+export default HelloWorld()
