@@ -1,3 +1,3 @@
-  # Functional Programming
-  ## Markdown area in functional programming
+# Functional Programming
 
+## Markdown areas in functional programming

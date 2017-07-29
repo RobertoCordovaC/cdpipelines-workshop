@@ -1,7 +1,11 @@
+import script from 'scriptjs'
+
 require('./styles.scss')
 
-const HelloWorld = () => {
-  document.write("hello, functional programming!!")
-}
+script('https://remarkjs.com/downloads/remark-latest.min.js', 'loader')
 
-export default HelloWorld()
+script.ready('loader', () => {
+  var slideshow = remark.create({
+    sourceUrl: 'content.md'
+  })
+});
