@@ -19,7 +19,6 @@ body {
 h1, h2, h3 {
   font-family: $font-family-title;
   font-weight: normal;
-
 }
 
 .remark-code, .remark-inline-code { font-family: $font-family-code; }
@@ -56,7 +55,17 @@ h1, h2, h3 {
   font-weight: normal;
   color: white;
   font-size: 2.5em;
-  padding: 20px;
+  padding: 5px;
   background: $silver-color;
+  display: inline-grid;
+}
+
+.normal-word {
+  font-family: $font-family-title;
+  font-weight: normal;
+  color: white;
+  font-size: 2.5em;
+  padding: 5px;
+  background: $blue-color;
   display: inline-grid;
 }
