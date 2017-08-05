@@ -17,6 +17,16 @@ let config = {
       {
         test: /\.scss$/,
         loader: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.(png|jpg|svg)$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 15000,
+            name: '[name].[ext]'
+          }
+        }
       }
     ]
   },
