@@ -1,0 +1,6 @@
+version: "3"
+services:
+  server:
+    image: gocd/gocd-server:v17.8.0
+  agent:
+    image: gocd/gocd-agent-alpine-3.5:v17.8.0

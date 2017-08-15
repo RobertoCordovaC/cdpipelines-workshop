@@ -2,19 +2,31 @@ class: center, middle, main-title
 
 # CD Pipelines Workshop
 
-By FaustoC
+By Armando & FaustoC
 
 ---
 
 class: center, middle, subtitle-1
 
-# Secondary heading 1
+# Contexto
 
 ---
 
-## Common slide
+class: center, middle, subtitle-2
 
-.center[![kitty](./assets/british_cat.jpg)]
+# CI/CD 
+
+---
+
+## CI/CD
+
+Descargar gocd server y gocd agent
+
+```bash
+docker pull gocd/gocd-server:v17.8.0
+
+docker pull gocd/gocd-agent-alpine-3.5:v17.8.0 
+```
 
 .image-source[http://2.bp.blogspot.com]
 
