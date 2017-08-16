@@ -47,12 +47,42 @@ docker-compose up
 ---
 ## CI/CD(2)
 
-1) Descargar gocd server y gocd agent
-
+4) Descargar YAML Configuration Plugin en este enlace:
 ```bash
-docker pull gocd/gocd-server:v17.8.0
+cd ~/Downloads
+wget https://github.com/tomzo/gocd-yaml-config-plugin/releases/download/0.4.0/yaml-config-plugin-0.4.0.jar
+```
+<br/>
+5) Agregar volumen /godata
+```yaml
+version: "3"
+services:
+  server:
+    image: gocd/gocd-server:v17.8.0
+    ports:
+      - "8153:8153"
+      - "8154:8154"
+    volumes:
+      - ./godata:/godata
+  agent:
+    depends_on:
+      - server
+    image: gocd/gocd-agent-alpine-3.5:v17.8.0
+    environment:
+      - GO_SERVER_URL=https://server:8154/go
+```
+---
+## CI/CD(3)
+6) Copiar el jar a la carpeta de plugins externos del server de GoCD
+```bash
+cp ~/Downloads/yaml-config-plugin-0.4.0.jar [location-of-your-project]/godata/plugins/external
+```
+<br/>
 
-docker pull gocd/gocd-agent-alpine-3.5:v17.8.0 
+7) Recrear los servicios
+```bash
+docker-compose down
+docker-compose up
 ```
 
 ---
