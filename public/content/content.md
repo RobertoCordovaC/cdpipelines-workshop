@@ -18,17 +18,42 @@ class: center, middle, subtitle-2
 
 ---
 
-## CI/CD
+## CI/CD(1)
 
-Descargar gocd server y gocd agent
+1) Descargar gocd server y gocd agent
 
 ```bash
 docker pull gocd/gocd-server:v17.8.0
 
 docker pull gocd/gocd-agent-alpine-3.5:v17.8.0 
 ```
+<br>
+2) Generar el archivo docker-compose.yml
 
-.image-source[http://2.bp.blogspot.com]
+```yaml
+version: "3"
+services:
+  server:
+    image: gocd/gocd-server:v17.8.0
+  agent:
+    image: gocd/gocd-agent-alpine-3.5:v17.8.0
+```
+<br/>
+3) Levantar los servicios
+```bash
+docker-compose create
+docker-compose up
+```
+---
+## CI/CD(2)
+
+1) Descargar gocd server y gocd agent
+
+```bash
+docker pull gocd/gocd-server:v17.8.0
+
+docker pull gocd/gocd-agent-alpine-3.5:v17.8.0 
+```
 
 ---
 

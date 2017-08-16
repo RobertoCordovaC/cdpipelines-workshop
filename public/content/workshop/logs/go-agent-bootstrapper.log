@@ -1,0 +1,1 @@
+2017-08-15 21:51:46,327 [main     ] ERROR go.agent.bootstrapper.AgentBootstrapper:39 - Error trying to validate file agent-launcher.jar: java.io.FileNotFoundException: /go/agent-launcher.jar (Permission denied)
