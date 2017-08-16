@@ -61,7 +61,6 @@ services:
     image: gocd/gocd-server:v17.8.0
     ports:
       - "8153:8153"
-      - "8154:8154"
     volumes:
       - ./godata:/godata
   agent:
