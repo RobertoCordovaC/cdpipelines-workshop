@@ -1,0 +1,26 @@
+pipelines:
+  pipeline-workshop:
+    group: workshops
+    materials:
+      repo:
+        git: https://github.com/faustocv/springboot-workshop-i.git
+        branch: master
+    stages:
+      - Unit_Tests:
+          jobs:
+            run_tests:
+              tasks:
+                - exec:
+                    command: sh
+                    arguments:
+                      - c
+                      - ./gradle clean test
+      - Integration_Tests:
+          jobs:
+            run_tests:
+              tasks:
+                - exec:
+                    command: sh
+                    arguments:
+                      - c
+                      - ./gradle clean integrationTest
