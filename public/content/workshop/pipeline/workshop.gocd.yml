@@ -1,5 +1,5 @@
 pipelines:
-  pipeline-workshop:
+  workshop-pipeline:
     group: workshops
     materials:
       repo:
