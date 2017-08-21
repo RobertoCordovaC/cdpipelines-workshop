@@ -9,6 +9,8 @@ services:
   agent:
     depends_on:
       - server
-    image: gocd/gocd-agent-alpine-3.5:v17.8.0
+    build:
+      context: .
+      dockerfile: Dockerfile.agent
     environment:
       - GO_SERVER_URL=https://server:8154/go
