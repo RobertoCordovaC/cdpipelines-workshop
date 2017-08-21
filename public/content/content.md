@@ -104,13 +104,83 @@ docker-compose up
 
 ---
 
-class: center, middle, subtitle-2
+## CI/CD(4)
+8) Configuración del pipeline
+```xml
+<cruise>
+  ...
+  <config-repos>
+    <config-repo plugin="yaml.config.plugin" id="workshop">
+      <git url="https://github.com/exarcol/pipeline-pipeline-workshop.git" />
+    </config-repo>
+  </config-repos>
+  <pipelines group="workshops" />
+  ...
+</cruise>
+```
+---
 
-## The Pipeline
+## CI/CD(5)
+9) Construir el Pipeline (Tests)
+```yaml
+pipelines:
+  workshop-pipeline:
+    group: workshops
+    materials:
+      repo:
+        git: https://github.com/exarcol/springboot-workshop-i.git
+        branch: master
+    stages:
+      - Tests:
+          jobs:
+            unit_tests:
+              tasks:
+                - exec:
+                    command: sh
+                    arguments:
+                      - -c
+                      - ./gradlew clean test
+            integration_tests:
+              tasks:
+                - exec:
+                    command: sh
+                    arguments:
+                      - -c
+                      - ./gradlew clean integrationTest
+```
+ ---
+## CI/CD(6)
 
+10) Construir el Pipeline (Build)
+
+```yaml
+pipelines:
+  workshop-pipeline:
+    group: workshops
+    materials:
+      repo:
+        git: https://github.com/exarcol/springboot-workshop-i.git
+        branch: master
+    stages:
+      ...
+      - Build:
+          jobs: 
+            build_fatjar:
+              tasks:
+                - exec:
+                    command: sh
+                    arguments:
+                      - -c
+                      - ./gradlew jar
+```
 
 ---
 
-class: center, middle, subtitle-3
+## CI/CD(7)
+11) Escalamiento de agentes
 
-# Secondary heading 3
+```bash
+docker-compose down
+docker-compose create
+docker-compose up --scale agent=2
+```

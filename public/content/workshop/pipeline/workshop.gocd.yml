@@ -3,24 +3,31 @@ pipelines:
     group: workshops
     materials:
       repo:
-        git: https://github.com/faustocv/springboot-workshop-i.git
+        git: https://github.com/exarcol/springboot-workshop-i.git
         branch: master
     stages:
-      - Unit_Tests:
+      - Tests:
           jobs:
-            run_tests:
+            unit_tests:
               tasks:
                 - exec:
                     command: sh
                     arguments:
-                      - c
-                      - ./gradle clean test
-      - Integration_Tests:
-          jobs:
-            run_tests:
+                      - -c
+                      - ./gradlew clean test
+            integration_tests:
               tasks:
                 - exec:
                     command: sh
                     arguments:
-                      - c
-                      - ./gradle clean integrationTest
+                      - -c
+                      - ./gradlew clean integrationTest
+        - Build:
+            jobs: 
+              build_fatjar:
+                tasks:
+                  - exec:
+                      command: sh
+                      arguments:
+                        - -c
+                        - ./gradlew jar
