@@ -14,7 +14,7 @@ class: center, middle, subtitle-1
 
 class: center, middle, subtitle-2
 
-# CI/CD 
+# CI/CD
 
 ---
 
@@ -25,7 +25,7 @@ class: center, middle, subtitle-2
 ```bash
 docker pull gocd/gocd-server:v17.8.0
 
-docker pull gocd/gocd-agent-ubuntu-16.04:v17.8.0 
+docker pull gocd/gocd-agent-ubuntu-16.04:v17.8.0
 ```
 <br>
 2) Generar el archivo docker-compose.yml
@@ -46,7 +46,8 @@ services:
 ```
 
 ---
-## Dockerfile
+
+## CI/CD(2)
 
 3) Create Dockerfile.agent
 ```Dockerfile
@@ -61,14 +62,12 @@ docker-compose create
 docker-compose up
 ```
 ---
-## CI/CD(2)
-
+## CI/CD(3)
 5) Descargar YAML Configuration Plugin en este enlace:
 ```bash
 cd ~/Downloads
 wget https://github.com/tomzo/gocd-yaml-config-plugin/releases/download/0.4.0/yaml-config-plugin-0.4.0.jar
 ```
-<br/>
 6) Agregar volumen /godata
 ```yaml
 version: "3"
@@ -89,7 +88,7 @@ services:
       - GO_SERVER_URL=https://server:8154/go
 ```
 ---
-## CI/CD(3)
+## CI/CD(4)
 7) Copiar el jar a la carpeta de plugins externos del server de GoCD
 ```bash
 cp ~/Downloads/yaml-config-plugin-0.4.0.jar [location-of-your-project]/godata/plugins/external
@@ -104,31 +103,29 @@ docker-compose up
 
 ---
 
-## CI/CD(4)
+## CI/CD(5)
 8) Configuración del pipeline
 ```xml
 <cruise>
-  ...
+  <server />
   <config-repos>
     <config-repo plugin="yaml.config.plugin" id="workshop">
-      <git url="https://github.com/exarcol/pipeline-pipeline-workshop.git" />
+      <git url="[your-git-repository-url]" />
     </config-repo>
   </config-repos>
-  <pipelines group="workshops" />
+  <pipelines group="workshop" />
   ...
 </cruise>
 ```
 ---
-
-## CI/CD(5)
-9) Construir el Pipeline (Tests)
+9) Construir el Pipeline (Tests). Archivo con extension .gocd.yaml
 ```yaml
 pipelines:
-  workshop-pipeline:
-    group: workshops
+  workshop_pipeline:
+    group: workshop
     materials:
       repo:
-        git: https://github.com/exarcol/springboot-workshop-i.git
+        git: https://github.com/[your github account]/springboot-workshop-i.git
         branch: master
     stages:
       - Tests:
@@ -148,23 +145,24 @@ pipelines:
                       - -c
                       - ./gradlew clean integrationTest
 ```
- ---
-## CI/CD(6)
+---
+
+## CI/CD(7)
 
 10) Construir el Pipeline (Build)
 
 ```yaml
 pipelines:
   workshop-pipeline:
-    group: workshops
+    group: workshop
     materials:
       repo:
-        git: https://github.com/exarcol/springboot-workshop-i.git
+        git: https://github.com/[your github account]/springboot-workshop-i.git
         branch: master
     stages:
       ...
       - Build:
-          jobs: 
+          jobs:
             build_fatjar:
               tasks:
                 - exec:
@@ -176,11 +174,9 @@ pipelines:
 
 ---
 
-## CI/CD(7)
+## CI/CD(8)
 11) Escalamiento de agentes
 
 ```bash
-docker-compose down
-docker-compose create
 docker-compose up --scale agent=2
 ```
